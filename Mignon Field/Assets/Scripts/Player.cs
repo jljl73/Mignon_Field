@@ -58,30 +58,31 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         if (PV.IsMine)
         {
             is_running = false;
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
                 is_running = true;
                 transform.rotation = Quaternion.Euler(0, 305, 0);
                 transform.position += new Vector3(-1, 0, 1f) * Time.deltaTime * Moving_Speed;
             }
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 is_running = true;
                 transform.rotation = Quaternion.Euler(0, 215, 0);
                 transform.position += new Vector3(-1f, 0, -1f) * Time.deltaTime * Moving_Speed;
             }
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
                 is_running = true;
                 transform.rotation = Quaternion.Euler(0, 135, 0);
                 transform.position += new Vector3(1f, 0, -1f) * Time.deltaTime * Moving_Speed;
             }
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 is_running = true;
                 transform.rotation = Quaternion.Euler(0, 45, 0);
                 transform.position += new Vector3(1, 0, 1f) * Time.deltaTime * Moving_Speed;
             }
+
 
             if (is_running)
             {
