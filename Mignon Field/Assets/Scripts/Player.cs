@@ -13,6 +13,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     private bool is_running = false;
     public PhotonView PV;
     public Text Nicknametxt;
+    public GameObject bullet;
+    public int HP = 100;
 
     Vector3 curPos;
     Quaternion curRot;
@@ -24,9 +26,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
         if (PV.IsMine)
         {
-            var CM = GameObject.Find("CMCamera").GetComponent<CinemachineVirtualCamera>();
-            CM.Follow = transform;
-            CM.LookAt = transform;
+            //var CM = GameObject.Find("CMCamera").GetComponent<CinemachineVirtualCamera>();
+            //CM.Follow = transform;
+            //CM.LookAt = transform;
+            GameObject.Find("Main Camera").GetComponent<MainCamera>().Player = this;
         }
     }
 
@@ -57,31 +60,55 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
         if (PV.IsMine)
         {
+            // 플레이어 이동
+            #region
             is_running = false;
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
                 is_running = true;
-                transform.rotation = Quaternion.Euler(0, 305, 0);
                 transform.position += new Vector3(-1, 0, 1f) * Time.deltaTime * Moving_Speed;
             }
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 is_running = true;
-                transform.rotation = Quaternion.Euler(0, 215, 0);
                 transform.position += new Vector3(-1f, 0, -1f) * Time.deltaTime * Moving_Speed;
             }
             if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
                 is_running = true;
-                transform.rotation = Quaternion.Euler(0, 135, 0);
                 transform.position += new Vector3(1f, 0, -1f) * Time.deltaTime * Moving_Speed;
             }
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 is_running = true;
-                transform.rotation = Quaternion.Euler(0, 45, 0);
                 transform.position += new Vector3(1, 0, 1f) * Time.deltaTime * Moving_Speed;
             }
+            #endregion
+
+
+            // 플레이어 방향
+            #region
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if(Physics.Raycast(ray, out hit, Mathf.Infinity))
+            {
+                float dx = hit.point.x - transform.position.x;
+                float dz = hit.point.z - transform.position.z;
+                Vector3 dir = new Vector3(dx, 0f, dz);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 10);
+            }
+
+            #endregion
+
+            // 총
+            #region
+            if (Input.GetMouseButtonDown(1))
+            {
+                PhotonNetwork.Instantiate("Prefabs/bullet", transform.position + new Vector3(-0.4f, 0.35f, 0.4f), transform.rotation);
+            }
+
+            #endregion
 
 
             if (is_running)

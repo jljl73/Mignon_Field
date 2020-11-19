@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 1758452608}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,9 +458,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049e3ff03b2fc9b48bc65c9cc161d2d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Moving_Speed: 3
+  Moving_Speed: 5
   PV: {fileID: 543459458774489804}
   Nicknametxt: {fileID: 543459458835293128}
+  bullet: {fileID: 5028629655342080678, guid: 8123ab4a149a1d342ad12e986f829c7a, type: 3}
+  HP: 100
 --- !u!114 &543459458774489804
 MonoBehaviour:
   m_ObjectHideFlags: 0

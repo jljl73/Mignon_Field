@@ -9,18 +9,31 @@ public class MainCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Player.PV.IsMine)
+        try
         {
-            transform.gameObject.SetActive(true);
+            if (Player.PV.IsMine)
+            {
+                transform.gameObject.SetActive(true);
+            }
+        }
+        catch
+        {
+
         }
     }
 
 
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
-        // 카메라 위치를 Player의 2, 3, -2 만큼 떨어진 곳으로 고정
-        transform.position = Player.transform.position + new Vector3(3, 5, -3);
-        transform.rotation = Quaternion.Euler(45, -transform.parent.rotation.y - 45, 0);
+        // 카메라 위치를 Player의 일정거리만큼 떨어진 곳으로 고정
+        try
+        {
+            transform.position = Vector3.Lerp(transform.position, Player.transform.position + new Vector3(8, 12, -8), Time.deltaTime * 10);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(45, Player.transform.rotation.y - 45, 0), Time.deltaTime * 10);
+        }
+        catch
+        {
+        }
     }
 }
