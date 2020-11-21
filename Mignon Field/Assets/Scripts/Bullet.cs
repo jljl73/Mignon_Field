@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviourPunCallbacks
     void Start()
     {
         GetComponent<Rigidbody>().AddForce(transform.forward * m_bulletspeed, ForceMode.Impulse);
-        Destroy(gameObject, 20);
+        Destroy(gameObject, 5f);
     }
 
     // Update is called once per frame
@@ -41,14 +41,17 @@ public class Bullet : MonoBehaviourPunCallbacks
     {
         if (other.gameObject.tag != "Player")
         {
-            Destroy(gameObject);
+            PV.RPC("DestroyRPC", RpcTarget.AllBuffered);
         }
         // 총 맞은 게 플레이어고 주인이 아니면
         else if (PV.Owner != other.GetComponent<Player>().PV.Owner)
         {
             if(other.GetComponent<Player>().PV.IsMine)
                 other.GetComponent<Player>().Hit();
-            Destroy(gameObject);
+            PV.RPC("DestroyRPC", RpcTarget.AllBuffered);
         }
     }
+
+    [PunRPC]
+    void DestroyRPC() => Destroy(gameObject);
 }
