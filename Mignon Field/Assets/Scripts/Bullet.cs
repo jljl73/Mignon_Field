@@ -7,7 +7,6 @@ using Photon.Realtime;
 public class Bullet : MonoBehaviourPunCallbacks
 {
     public PhotonView PV;
-    // Start is called before the first frame update
     public float m_bulletspeed = 8.0f;
     Vector3 curPos;
     Quaternion curRot;
@@ -40,15 +39,15 @@ public class Bullet : MonoBehaviourPunCallbacks
 
     void OnTriggerEnter(Collider other)
     {
-        //총쏜 주인이면 노판정
         if (other.gameObject.tag != "Player")
         {
             Destroy(gameObject);
         }
-        // 총 맞은 게 플레이어라면
-        else if(other.gameObject.tag == "Player")
+        // 총 맞은 게 플레이어고 주인이 아니면
+        else if (PV.Owner != other.GetComponent<Player>().PV.Owner)
         {
-            other.GetComponent<Player>().HP -= 30;
+            if(other.GetComponent<Player>().PV.IsMine)
+                other.GetComponent<Player>().Hit();
             Destroy(gameObject);
         }
     }

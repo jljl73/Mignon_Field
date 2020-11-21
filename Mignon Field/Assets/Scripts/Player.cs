@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
-using Cinemachine;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -23,12 +22,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     {
         Nicknametxt.text = PV.IsMine ? PhotonNetwork.NickName : PV.Owner.NickName;
         Nicknametxt.color = PV.IsMine ? Color.green : Color.red;
+        transform.Find("Minimap_Marker").GetComponent<MeshRenderer>().material.color = PV.IsMine ? Color.green : Color.red;
 
         if (PV.IsMine)
         {
-            //var CM = GameObject.Find("CMCamera").GetComponent<CinemachineVirtualCamera>();
-            //CM.Follow = transform;
-            //CM.LookAt = transform;
             GameObject.Find("Main Camera").GetComponent<MainCamera>().Player = this;
         }
     }
@@ -105,7 +102,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             #region
             if (Input.GetMouseButtonDown(1))
             {
-                PhotonNetwork.Instantiate("Prefabs/bullet", transform.position + new Vector3(-0.4f, 0.35f, 0.4f), transform.rotation);
+                PhotonNetwork.Instantiate("Prefabs/bullet", transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
             }
 
             #endregion
@@ -129,4 +126,18 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
         Nicknametxt.transform.rotation = Quaternion.Euler(45, -transform.rotation.y - 45, 0);
     }
+
+    public void Hit()
+    {
+        HP -= 30;
+        if (HP < 0)
+        {
+            Debug.Log("dsad");
+            GameObject.Find("Canvas").transform.Find("Respawn Panel").gameObject.SetActive(true);
+            PV.RPC("DestroyRPC", RpcTarget.AllBuffered);
+        }
+    }
+
+    [PunRPC]
+    void DestroyRPC() => Destroy(gameObject);
 }
