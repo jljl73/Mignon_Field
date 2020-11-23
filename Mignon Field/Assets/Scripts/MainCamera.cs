@@ -16,6 +16,7 @@ public class MainCamera : MonoBehaviour
             {
                 transform.gameObject.SetActive(true);
             }
+            int layerMaks = 1 << LayerMask.NameToLayer("buildings");
         }
         catch
         {
