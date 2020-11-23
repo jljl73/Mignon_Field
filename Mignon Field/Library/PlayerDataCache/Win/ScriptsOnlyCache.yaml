@@ -2,6 +2,8 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Bullet
+    - Gun
+    - Item
     - MainCamera
     - NetworkManager
     - Player
@@ -96,55 +98,59 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11290}
     - Class: 114
-      Script: {instanceID: 11520}
+      Script: {instanceID: 11314}
     - Class: 114
-      Script: {instanceID: 11526}
+      Script: {instanceID: 11320}
     - Class: 114
-      Script: {instanceID: 11658}
+      Script: {instanceID: 11452}
     - Class: 114
-      Script: {instanceID: 11690}
+      Script: {instanceID: 11484}
     - Class: 114
-      Script: {instanceID: 11712}
+      Script: {instanceID: 11506}
     - Class: 114
-      Script: {instanceID: 11812}
+      Script: {instanceID: 11606}
     - Class: 114
-      Script: {instanceID: 12358}
+      Script: {instanceID: 12152}
     - Class: 114
-      Script: {instanceID: 12448}
+      Script: {instanceID: 12242}
     - Class: 114
-      Script: {instanceID: 12692}
+      Script: {instanceID: 12486}
     - Class: 114
-      Script: {instanceID: 12772}
+      Script: {instanceID: 12566}
     - Class: 114
-      Script: {instanceID: 12974}
+      Script: {instanceID: 12768}
+    - Class: 114
+      Script: {instanceID: 12812}
+    - Class: 114
+      Script: {instanceID: 12898}
+    - Class: 114
+      Script: {instanceID: 12990}
+    - Class: 114
+      Script: {instanceID: 13006}
     - Class: 114
       Script: {instanceID: 13018}
     - Class: 114
-      Script: {instanceID: 13104}
+      Script: {instanceID: 13240}
     - Class: 114
-      Script: {instanceID: 13196}
+      Script: {instanceID: 13262}
     - Class: 114
-      Script: {instanceID: 13212}
+      Script: {instanceID: 13282}
     - Class: 114
-      Script: {instanceID: 13224}
+      Script: {instanceID: 13298}
     - Class: 114
-      Script: {instanceID: 13446}
+      Script: {instanceID: 13326}
     - Class: 114
-      Script: {instanceID: 13468}
+      Script: {instanceID: 13454}
     - Class: 114
-      Script: {instanceID: 13488}
+      Script: {instanceID: 13846}
     - Class: 114
-      Script: {instanceID: 13504}
+      Script: {instanceID: 13944}
     - Class: 114
-      Script: {instanceID: 13532}
+      Script: {instanceID: 13982}
     - Class: 114
-      Script: {instanceID: 13660}
+      Script: {instanceID: 19220}
     - Class: 114
-      Script: {instanceID: 14052}
-    - Class: 114
-      Script: {instanceID: 14150}
-    - Class: 114
-      Script: {instanceID: 14188}
+      Script: {instanceID: 28840}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -316,7 +322,7 @@ ScriptsOnlyBuild:
     className: CinemachineFollowZoom
   - hash:
       serializedVersion: 2
-      Hash: 058e6f7d7d32f244a281e860c8aa25ad
+      Hash: eb6ad5ef90259d1ffa3fe0ec65229635
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -1760,6 +1766,24 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 0e8f8cd18925bcfaeacd340de88c5eac
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Gun
+  - hash:
+      serializedVersion: 2
+      Hash: d8f3cf3ef5bb0e0bb0c261c79bfab7da
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Item
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UI
   platform: 5
   scenePathNames:
   - Assets/Scenes/Main.unity

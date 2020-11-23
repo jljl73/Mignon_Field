@@ -13,17 +13,19 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public PhotonView PV;
     public Text Nicknametxt;
     public GameObject bullet;
-    public int HP = 100;
+    public int HP;
+    public Gun gun;
+
 
     Vector3 curPos;
     Quaternion curRot;
+    string str_HP;
 
     void Awake()
     {
         Nicknametxt.text = PV.IsMine ? PhotonNetwork.NickName : PV.Owner.NickName;
         Nicknametxt.color = PV.IsMine ? Color.green : Color.red;
         transform.Find("Minimap_Marker").GetComponent<MeshRenderer>().material.color = PV.IsMine ? Color.green : Color.red;
-
         if (PV.IsMine)
         {
             GameObject.Find("Main Camera").GetComponent<MainCamera>().Player = this;
@@ -48,13 +50,15 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     // Use this for initialization
     void Start()
     {
+        HP = 100;
         GetComponent<Animator>().SetBool("Is_Running", false);
+        str_HP = "HP " + HP.ToString();
+        GameObject.Find("Canvas").transform.Find("UI").transform.Find("HP").transform.GetComponent<Text>().text = str_HP;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (PV.IsMine)
         {
             // 플레이어 이동
@@ -98,14 +102,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
             #endregion
 
-            // 총
-            #region
-            if (Input.GetMouseButtonDown(1))
-            {
-                PhotonNetwork.Instantiate("Prefabs/bullet", transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
-            }
-
-            #endregion
 
 
             if (is_running)
@@ -136,6 +132,15 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             GameObject.Find("Canvas").transform.Find("Respawn Panel").gameObject.SetActive(true);
             PV.RPC("DestroyRPC", RpcTarget.AllBuffered);
         }
+        str_HP = "HP " + HP.ToString();
+        GameObject.Find("Canvas").transform.Find("UI").transform.Find("HP").transform.GetComponent<Text>().text = str_HP;
+    }
+
+    public void Heal(int num)
+    {
+        HP += num;
+        str_HP = "HP " + HP.ToString();
+        GameObject.Find("Canvas").transform.Find("UI").transform.Find("HP").transform.GetComponent<Text>().text = str_HP;
     }
 
     [PunRPC]
