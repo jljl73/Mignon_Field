@@ -5,7 +5,8 @@ using UnityEngine;
 public class MainCamera : MonoBehaviour
 {
     public Player Player;
-
+    public Camera Camera;
+    private RaycastHit hit;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,5 +36,27 @@ public class MainCamera : MonoBehaviour
         catch
         {
         }
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit)){
+            Debug.Log("hit point : " + hit.point + ", distance : " + hit.distance + ", name : " + hit.collider.name); 
+            Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
+        }
+
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(transform.position, transform.forward, 100.0f);
+
+        for(int i=0;i<hits.Length;i++){
+            RaycastHit hit = hits[i];
+            Renderer rend = hit.transform.GetComponent<Renderer>();
+
+            if(rend){
+                rend.material.shader = Shader.Find("Transparent/Diffuse");
+                Color tempColor = rend.material.color;
+                tempColor.a = 0.3F;
+                rend.material.color = tempColor;
+            }
+        }
+
+
     }
 }
