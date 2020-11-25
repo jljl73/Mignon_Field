@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - MainCamera
     - NetworkManager
     - Player
+    - UI
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
     - Photon.Pun.Demo.Asteroids.Bullet
@@ -98,59 +99,61 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11290}
     - Class: 114
-      Script: {instanceID: 11314}
+      Script: {instanceID: 11312}
     - Class: 114
-      Script: {instanceID: 11320}
+      Script: {instanceID: 11318}
     - Class: 114
-      Script: {instanceID: 11452}
+      Script: {instanceID: 11450}
     - Class: 114
-      Script: {instanceID: 11484}
+      Script: {instanceID: 11482}
     - Class: 114
-      Script: {instanceID: 11506}
+      Script: {instanceID: 11504}
     - Class: 114
-      Script: {instanceID: 11606}
+      Script: {instanceID: 11604}
     - Class: 114
-      Script: {instanceID: 12152}
+      Script: {instanceID: 11804}
     - Class: 114
-      Script: {instanceID: 12242}
+      Script: {instanceID: 11848}
     - Class: 114
-      Script: {instanceID: 12486}
+      Script: {instanceID: 11974}
     - Class: 114
-      Script: {instanceID: 12566}
+      Script: {instanceID: 12156}
     - Class: 114
-      Script: {instanceID: 12768}
+      Script: {instanceID: 12246}
     - Class: 114
-      Script: {instanceID: 12812}
+      Script: {instanceID: 12490}
     - Class: 114
-      Script: {instanceID: 12898}
+      Script: {instanceID: 12570}
     - Class: 114
-      Script: {instanceID: 12990}
+      Script: {instanceID: 12772}
     - Class: 114
-      Script: {instanceID: 13006}
+      Script: {instanceID: 12816}
     - Class: 114
-      Script: {instanceID: 13018}
+      Script: {instanceID: 12902}
     - Class: 114
-      Script: {instanceID: 13240}
+      Script: {instanceID: 12994}
     - Class: 114
-      Script: {instanceID: 13262}
+      Script: {instanceID: 13010}
     - Class: 114
-      Script: {instanceID: 13282}
+      Script: {instanceID: 13022}
     - Class: 114
-      Script: {instanceID: 13298}
+      Script: {instanceID: 13244}
     - Class: 114
-      Script: {instanceID: 13326}
+      Script: {instanceID: 13266}
     - Class: 114
-      Script: {instanceID: 13454}
+      Script: {instanceID: 13286}
     - Class: 114
-      Script: {instanceID: 13846}
+      Script: {instanceID: 13302}
     - Class: 114
-      Script: {instanceID: 13944}
+      Script: {instanceID: 13330}
     - Class: 114
-      Script: {instanceID: 13982}
+      Script: {instanceID: 13458}
     - Class: 114
-      Script: {instanceID: 19220}
+      Script: {instanceID: 13850}
     - Class: 114
-      Script: {instanceID: 28840}
+      Script: {instanceID: 13948}
+    - Class: 114
+      Script: {instanceID: 13986}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -220,7 +223,7 @@ ScriptsOnlyBuild:
     className: PlayerListCell
   - hash:
       serializedVersion: 2
-      Hash: 16315800580b925776790dbcd06061e3
+      Hash: 42b55b378b5b3715acd8c88f620625f3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainCamera
@@ -562,6 +565,12 @@ ScriptsOnlyBuild:
     className: BezierCurve
   - hash:
       serializedVersion: 2
+      Hash: d8f3cf3ef5bb0e0bb0c261c79bfab7da
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Item
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Hub
@@ -584,6 +593,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 0e8f8cd18925bcfaeacd340de88c5eac
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Gun
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -638,6 +653,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 2a3b8e0eda25b45b5ea5c7dd6845c933
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UI
   - hash:
       serializedVersion: 2
       Hash: fb70f07c52fc0817edd54327b41ca12c
@@ -1336,7 +1357,7 @@ ScriptsOnlyBuild:
     className: CinemachineImpulseSource
   - hash:
       serializedVersion: 2
-      Hash: 4d25ce18ec48a3d5e0c88a80678d5ae1
+      Hash: 8612e0e26bd860e6f683c226209adc42
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkManager
@@ -1766,24 +1787,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 0e8f8cd18925bcfaeacd340de88c5eac
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Gun
-  - hash:
-      serializedVersion: 2
-      Hash: d8f3cf3ef5bb0e0bb0c261c79bfab7da
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Item
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: UI
   platform: 5
   scenePathNames:
   - Assets/Scenes/Main.unity

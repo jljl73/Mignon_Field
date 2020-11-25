@@ -39,7 +39,7 @@ public class MainCamera : MonoBehaviour
         }
 
         if (Physics.Raycast(transform.position, transform.forward, out hit)){
-            Debug.Log("hit point : " + hit.point + ", distance : " + hit.distance + ", name : " + hit.collider.name); 
+            //Debug.Log("hit point : " + hit.point + ", distance : " + hit.distance + ", name : " + hit.collider.name); 
             Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
         }
 
@@ -51,7 +51,7 @@ public class MainCamera : MonoBehaviour
             Renderer rend = hit.transform.GetComponent<Renderer>();
 
             if(rend){
-                rend.material.shader = Shader.Find("Transparent/Diffuse");
+                //rend.material.shader = Shader.Find("Transparent/Diffuse");
                 Color tempColor = rend.material.color;
                 tempColor.a = 0.3F;
                 rend.material.color = tempColor;
